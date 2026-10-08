@@ -79,8 +79,10 @@ main {
 
 .hero {
     min-height: 100vh;
-    display: grid;
-    place-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     text-align: center;
     padding-top: 6rem;
     position: relative;
@@ -124,20 +126,20 @@ main {
 }
 
 .subtitle {
-    margin-top: 1rem;
+    margin: 1rem 0 0;
     color: var(--muted);
     font-size: clamp(1.1rem, 2vw, 1.5rem);
     letter-spacing: 0.04em;
 }
 
 .scroll-text {
-    margin-top: 0.4rem;
+    margin: 0.4rem 0 0;
     color: rgba(255,255,255,0.8);
     font-size: 1rem;
 }
 
 .hero-actions {
-    margin-top: 2rem;
+    margin: 2rem 0 0;
     display: flex;
     justify-content: center;
 }
@@ -176,7 +178,7 @@ main {
 
 .hero-main-heart {
     position: relative;
-    margin-top: 2rem;
+    margin: 2rem 0 0;
     font-size: clamp(2rem, 4vw, 3rem);
     background: rgba(255,255,255,0.07);
     border: 1px solid rgba(255,255,255,0.2);

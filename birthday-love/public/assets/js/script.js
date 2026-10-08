@@ -19,7 +19,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const finalMessage = document.getElementById('finalMessage');
     const secretToast = document.getElementById('secretToast');
     const heroHeart = document.getElementById('heroHeart');
-    const typingLine = document.getElementById('typingLine');
     const primaryButtons = document.querySelectorAll('.start-surprise');
     const cursorDot = document.getElementById('cursorDot');
 
@@ -221,15 +220,6 @@ document.addEventListener('DOMContentLoaded', () => {
         showSecretToast.timeoutId = setTimeout(() => {
             secretToast.classList.remove('visible');
         }, 2200);
-    }
-
-    if (typingLine) {
-        const typingText = 'Scroll down for your little surprise...';
-        let typingIndex = 0;
-        setInterval(() => {
-            typingLine.textContent = typingText.slice(0, typingIndex);
-            typingIndex = typingIndex >= typingText.length ? 0 : typingIndex + 1;
-        }, 110);
     }
 
     if (envelope) {

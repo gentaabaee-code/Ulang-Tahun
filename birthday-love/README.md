@@ -1,67 +1,91 @@
 # Birthday Love Website
 
-A romantic birthday landing page built with PHP native, HTML5, CSS3, and vanilla JavaScript. It is designed to work in XAMPP/localhost and can also be adapted for Vercel deployment.
+A romantic birthday landing page built with Python, HTML5, CSS3, and vanilla JavaScript. It is configured for Vercel deployment and uses Flask to serve the page and API endpoint.
 
 ## Project structure
 
 ```text
 birthday-love/
-├── index.php
+├── app.py
+├── public/
+│   └── assets/
+│       ├── css/
+│       │   └── style.css
+│       ├── js/
+│       │   └── script.js
+│       ├── images/
+│       │   ├── photo1.jpg
+│       │   ├── photo2.jpg
+│       │   ├── photo3.jpg
+│       │   ├── photo4.jpg
+│       │   ├── photo5.jpg
+│       │   └── photo6.jpg
+│       └── music/
+│           └── romantic.mp3
+├── requirements.txt
 ├── vercel.json
 ├── README.md
-├── assets/
-│   ├── css/
-│   │   └── style.css
-│   ├── js/
-│   │   └── script.js
-│   ├── images/
-│   │   ├── photo1.jpg
-│   │   ├── photo2.jpg
-│   │   ├── photo3.jpg
-│   │   ├── photo4.jpg
-│   │   ├── photo5.jpg
-│   │   └── photo6.jpg
-│   └── music/
-│       └── romantic.mp3
-└── api/
-    └── index.php
 ```
 
-## Local run (XAMPP / localhost)
+## Local run
 
-1. Copy the folder `birthday-love` into your local web root.
-2. Start Apache in XAMPP.
-3. Open the browser and visit:
+1. Open the project folder and create a virtual environment:
+
+```bash
+python -m venv .venv
+```
+
+2. Activate it and install dependencies:
+
+Windows PowerShell:
+
+```powershell
+.\.venv\Scripts\Activate.ps1
+pip install -r requirements.txt
+```
+
+macOS/Linux:
+
+```bash
+source .venv/bin/activate
+pip install -r requirements.txt
+```
+
+3. Run the app:
+
+```bash
+python app.py
+```
+
+4. Open the browser and visit:
 
 ```text
-http://localhost/birthday-love/
+http://localhost:8000/
 ```
-
-If your local root is different, adjust the URL accordingly.
 
 ## Editing the letter text
 
-The main love letter text is centralized in `index.php` at the top of the file inside the `$letterParagraphs` array. You can modify the text there easily.
+The main love letter text is centralized in `app.py` inside the `LETTER_PARAGRAPHS` list. Adjust the text there to personalize the message.
 
-## Vercel notes
+## Vercel deployment
 
-Vercel does not run a plain PHP application the same way as a traditional server like XAMPP. For a PHP-backed project on Vercel, the usual setup is to use a serverless PHP runtime and route requests through `api/*.php`.
-
-This project includes a Vercel-compatible PHP configuration in `vercel.json`.
+Vercel detects the Flask app in `app.py` and installs dependencies from `requirements.txt`. Static files are in `public/assets` and are served by Vercel's CDN.
 
 Important:
-- `index.php` is the main frontend page for local development.
-- `api/index.php` provides the serverless PHP endpoint used by Vercel.
-- `vercel.json` tells Vercel to route PHP requests using `vercel-php@0.7.3`.
+- `app.py` is the Flask entry point and handles the homepage and `/api` endpoint.
+- Put static files under `public/` so Vercel serves them directly.
+- `requirements.txt` installs Flask for the serverless app.
+- `vercel.json` contains the Vercel configuration schema; no custom routes or legacy PHP runtime are required.
 
-## Deploy to Vercel
+### Deploy to Vercel
 
-1. Push this project into a Git repository.
+1. Push this project to a Git repository.
 2. Import the repository in Vercel.
-3. Set the root folder to the project directory.
-4. Deploy.
+3. Set the project root to the `birthday-love` folder if the repository contains other projects.
+4. Keep the detected Flask framework preset and default build settings.
+5. Deploy.
 
-If Vercel reports a runtime issue, confirm that the project contains the `vercel.json` configuration and that the `api/*.php` files are correct.
+Alternatively, from the project folder, install the Vercel CLI and run `vercel` for a preview deployment or `vercel --prod` for production.
 
 ## Notes
 
