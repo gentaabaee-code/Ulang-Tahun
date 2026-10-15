@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     const loadingScreen = document.getElementById('loadingScreen');
-    const floatingHearts = document.getElementById('floatingHearts');
+    const floatingBalloons = document.getElementById('floatingBalloons');
     const sparklesLayer = document.getElementById('sparklesLayer');
     const musicPlayer = document.getElementById('musicPlayer');
     const bgMusic = document.getElementById('bgMusic');
@@ -31,25 +31,29 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 1600);
     }
 
-    function createFloatingHearts() {
-        const heartSymbols = ['❤', '♡', '♥', '❤'];
+    function createFloatingBalloons() {
+        if (!floatingBalloons) return;
+
+        const partySymbols = ['🎈', '🎉', '🎊', '✨'];
         const total = 24;
 
         for (let i = 0; i < total; i++) {
-            const heart = document.createElement('span');
-            heart.className = 'floating-heart';
-            heart.textContent = heartSymbols[i % heartSymbols.length];
-            heart.style.left = `${Math.random() * 100}%`;
-            heart.style.animationDuration = `${12 + Math.random() * 12}s`;
-            heart.style.fontSize = `${Math.random() * 1.4 + 0.8}rem`;
-            heart.style.opacity = `${Math.random() * 0.8 + 0.2}`;
-            heart.style.setProperty('--drift-x', `${(Math.random() - 0.5) * 180}px`);
-            heart.style.setProperty('--rotate', `${Math.random() * 240 - 120}deg`);
-            floatingHearts.appendChild(heart);
+            const balloon = document.createElement('span');
+            balloon.className = 'floating-balloon';
+            balloon.textContent = partySymbols[i % partySymbols.length];
+            balloon.style.left = `${Math.random() * 100}%`;
+            balloon.style.animationDuration = `${12 + Math.random() * 12}s`;
+            balloon.style.fontSize = `${Math.random() * 1.4 + 0.8}rem`;
+            balloon.style.opacity = `${Math.random() * 0.8 + 0.2}`;
+            balloon.style.setProperty('--drift-x', `${(Math.random() - 0.5) * 180}px`);
+            balloon.style.setProperty('--rotate', `${Math.random() * 240 - 120}deg`);
+            floatingBalloons.appendChild(balloon);
         }
     }
 
     function createSparkles() {
+        if (!sparklesLayer) return;
+
         const total = 26;
 
         for (let i = 0; i < total; i++) {
@@ -157,12 +161,12 @@ document.addEventListener('DOMContentLoaded', () => {
         const burstCount = 18;
         for (let i = 0; i < burstCount; i++) {
             const heart = document.createElement('span');
-            heart.textContent = '❤';
+            heart.textContent = ['🎉', '✨', '🎊', '⭐'][i % 4];
             heart.style.position = 'fixed';
             heart.style.left = `${x}px`;
             heart.style.top = `${y}px`;
             heart.style.fontSize = `${12 + Math.random() * 16}px`;
-            heart.style.color = i % 2 === 0 ? '#ff9fc8' : '#ffd9e8';
+            heart.style.color = i % 2 === 0 ? '#ffe06d' : '#ffad78';
             heart.style.pointerEvents = 'none';
             heart.style.zIndex = '150';
             heart.style.transform = 'translate(-50%, -50%)';
@@ -180,7 +184,7 @@ document.addEventListener('DOMContentLoaded', () => {
             piece.style.top = '-20px';
             piece.style.width = `${6 + Math.random() * 8}px`;
             piece.style.height = `${10 + Math.random() * 14}px`;
-            piece.style.background = ['#ff8ecb', '#ffd7a8', '#fce1f2', '#ffb4c7'][Math.floor(Math.random() * 4)];
+            piece.style.background = ['#ffe06d', '#ffad78', '#ff718b', '#9ce5d1'][Math.floor(Math.random() * 4)];
             piece.style.borderRadius = '50%';
             piece.style.pointerEvents = 'none';
             piece.style.zIndex = '150';
@@ -269,12 +273,12 @@ document.addEventListener('DOMContentLoaded', () => {
         finalMessage.classList.add('visible');
         for (let i = 0; i < 18; i++) {
             const burst = document.createElement('span');
-            burst.textContent = '❤';
+            burst.textContent = ['🎉', '✨', '🎊', '⭐'][i % 4];
             burst.style.position = 'fixed';
             burst.style.left = `${Math.random() * window.innerWidth}px`;
             burst.style.top = `${Math.random() * window.innerHeight}px`;
             burst.style.fontSize = `${18 + Math.random() * 20}px`;
-            burst.style.color = '#ff74b0';
+            burst.style.color = '#ffe06d';
             burst.style.pointerEvents = 'none';
             burst.style.zIndex = '160';
             burst.style.animation = 'heartbeat 1.2s ease-in-out forwards';
@@ -295,9 +299,9 @@ document.addEventListener('DOMContentLoaded', () => {
         secretClicks += 1;
         triggerHeartBurst(heroHeart.getBoundingClientRect().left + 30, heroHeart.getBoundingClientRect().top + 30);
         if (secretClicks >= 5) {
-            showSecretToast('You found a secret ❤️');
+            showSecretToast('Kamu nemu kejutan rahasia! 🎉');
             setTimeout(() => {
-                showSecretToast('I love you more than yesterday, but less than tomorrow.');
+                showSecretToast('Adek tetap disayang, walau julidmu juara. 😜');
             }, 600);
             secretClicks = 0;
         }
@@ -366,7 +370,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     hideLoadingScreen();
-    createFloatingHearts();
+    createFloatingBalloons();
     createSparkles();
     observeReveal();
     animateCounters();

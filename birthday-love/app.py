@@ -112,7 +112,7 @@ def render_page() -> str:
             <link rel="preconnect" href="https://fonts.googleapis.com">
             <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
             <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-            <link rel="stylesheet" href="/assets/css/style.css">
+            <link rel="stylesheet" href="/assets/css/style.css?v=3">
         </head>
         <body>
             <div class="loading-screen" id="loadingScreen" aria-live="polite">
@@ -251,7 +251,7 @@ def render_page() -> str:
                 </div>
             </div>
 
-            <script src="/assets/js/script.js"></script>
+            <script src="/assets/js/script.js?v=3"></script>
         </body>
         </html>
         """

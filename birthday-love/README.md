@@ -1,6 +1,6 @@
-# Birthday Love Website
+# Ulang Tahun Adek Kesayangan
 
-A romantic birthday landing page built with Python, HTML5, CSS3, and vanilla JavaScript. It is configured for Vercel deployment and uses Flask to serve the page and API endpoint.
+Website ucapan ulang tahun untuk adek kesayangan, lengkap dengan galeri foto, surat dari kakak, musik, dan kejutan kecil. Dibuat dengan Python, HTML5, CSS3, dan vanilla JavaScript, serta tetap menggunakan konfigurasi deploy Vercel yang sudah ada.
 
 ## Project structure
 
@@ -63,9 +63,9 @@ python app.py
 http://localhost:8000/
 ```
 
-## Editing the letter text
+## Mengubah ucapan dan foto
 
-The main love letter text is centralized in `app.py` inside the `LETTER_PARAGRAPHS` list. Adjust the text there to personalize the message.
+Teks surat dan bagian halaman diatur di `app.py`. Untuk mengganti foto, timpa `public/assets/images/photo1.png` sampai `photo6.png` dengan foto pilihan; nama file dan lokasinya harus tetap sama agar galeri langsung menampilkannya.
 
 ## Vercel deployment
 
